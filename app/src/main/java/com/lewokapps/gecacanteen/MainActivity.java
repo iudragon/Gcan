@@ -167,8 +167,9 @@ public class MainActivity extends AppCompatActivity
 
         if (currentUser == null) {
 
-            navigationView.getMenu().getItem(navigationView.getMenu().size() - 1).setEnabled(false);
+            navigationView.getMenu().getItem(navigationView.getMenu().size() - 1).setVisible(false); //// CHANGE
         } else {
+            navigationView.getMenu().getItem(navigationView.getMenu().size() - 1).setVisible(true);
             navigationView.getMenu().getItem(navigationView.getMenu().size() - 1).setEnabled(true);
 
         }
