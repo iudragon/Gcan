@@ -41,7 +41,6 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.wishlist_item_layout, viewGroup, false);
 
         return new ViewHolder(view);
@@ -112,17 +111,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
             Glide.with(itemView.getContext()).load(resource).apply(new RequestOptions().placeholder(R.drawable.placeholdericonmini)).into(productImage);
 
             productTitle.setText(title);
-            if (freeCouponsNo != 0 && inStock) {
-//                couponIcon.setVisibility(View.VISIBLE);
-                if (freeCouponsNo == 1) {
-//                    freeCoupons.setText("Free " + freeCouponsNo + " Coupon");
-                } else {
-//                    freeCoupons.setText("Free " + freeCouponsNo + " Coupons");
-                }
-            } else {
-//                couponIcon.setVisibility(View.INVISIBLE);
-//                freeCoupons.setVisibility(View.INVISIBLE);
-            }
+
 
 //                LinearLayout linearLayout = (LinearLayout) rating.getParent();
             if (inStock) {
@@ -139,12 +128,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
                 productPrice.setText("Rs. " + price + "/-");
                 cuttedPrice.setText("Rs. " + cuttedPricevValue + "/-");
 
-                if (COD) {
-//                    paymentMethod.setVisibility(View.VISIBLE);
-                } else {
 
-//                    paymentMethod.setVisibility(View.INVISIBLE);
-                }
             } else {
 
 //                linearLayout.setVisibility(View.INVISIBLE);
@@ -167,8 +151,6 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
                     deleteBtn.setVisibility(View.VISIBLE);
 
                 }
-
-
 
             } else {
 

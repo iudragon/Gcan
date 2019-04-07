@@ -22,7 +22,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.lewokapps.gecacanteen.DBqueries.categoryModelList;
 import static com.lewokapps.gecacanteen.DBqueries.lists;
 import static com.lewokapps.gecacanteen.DBqueries.loadCategories;
 import static com.lewokapps.gecacanteen.DBqueries.loadFragmentData;
@@ -45,10 +44,10 @@ public class HomeFragment extends Fragment {
 
     public static SwipeRefreshLayout swipeRefreshLayout;
 
-    private List<CategoryModel> categoryModelFakeList = new ArrayList<>();
+
 
     private RecyclerView categoryRecyclerView;
-    private CategoryAdapter categoryAdapter;
+
 
     private RecyclerView homePageRecyclerView;
 
@@ -93,23 +92,6 @@ public class HomeFragment extends Fragment {
         homePageRecyclerView.setLayoutManager(testingLayoutManager);
 
 
-        ///// categories fake list
-
-
-        categoryModelFakeList.add(new CategoryModel("null", ""));
-        categoryModelFakeList.add(new CategoryModel("", ""));
-        categoryModelFakeList.add(new CategoryModel("", ""));
-        categoryModelFakeList.add(new CategoryModel("", ""));
-        categoryModelFakeList.add(new CategoryModel("", ""));
-        categoryModelFakeList.add(new CategoryModel("", ""));
-        categoryModelFakeList.add(new CategoryModel("", ""));
-        categoryModelFakeList.add(new CategoryModel("", ""));
-        categoryModelFakeList.add(new CategoryModel("", ""));
-        categoryModelFakeList.add(new CategoryModel("", ""));
-
-        ///// categories fake list
-
-
         ///// home page fake list
 
         List<SliderModel> sliderModelFakeList = new ArrayList<>();
@@ -129,13 +111,11 @@ public class HomeFragment extends Fragment {
         horizontalProductScrollModelFakeList.add(new HorizontalProductScrollModel("", "", "", "", ""));
 
         homePageModelFakeList.add(new HomePageModel(0, sliderModelFakeList));
-        homePageModelFakeList.add(new HomePageModel(1, "", "#defeed"));
         homePageModelFakeList.add(new HomePageModel(2, "", "#defeed", horizontalProductScrollModelFakeList, new ArrayList<WishlistModel>()));
         homePageModelFakeList.add(new HomePageModel(3, "", "#defeed", horizontalProductScrollModelFakeList));
 
         ///// home page fake list
 
-        categoryAdapter = new CategoryAdapter(categoryModelFakeList);
 
         adapter = new HomePageAdapter(homePageModelFakeList);
 
@@ -152,15 +132,8 @@ public class HomeFragment extends Fragment {
             categoryRecyclerView.setVisibility(View.VISIBLE);
             homePageRecyclerView.setVisibility(View.VISIBLE);
 
-            if (categoryModelList.size() == 0) {
 
-                loadCategories(categoryRecyclerView, getContext());
-            } else {
-                categoryAdapter = new CategoryAdapter(categoryModelList);
-                categoryAdapter.notifyDataSetChanged();
-            }
 
-            categoryRecyclerView.setAdapter(categoryAdapter);
 
             if (lists.size() == 0) {
                 loadedCategoriesNames.add("HOME");
@@ -234,11 +207,9 @@ public class HomeFragment extends Fragment {
             categoryRecyclerView.setVisibility(View.VISIBLE);
             homePageRecyclerView.setVisibility(View.VISIBLE);
 
-            categoryAdapter = new CategoryAdapter(categoryModelFakeList);
 
             adapter = new HomePageAdapter(homePageModelFakeList);
 
-            categoryRecyclerView.setAdapter(categoryAdapter);
 
             homePageRecyclerView.setAdapter(adapter);
 
